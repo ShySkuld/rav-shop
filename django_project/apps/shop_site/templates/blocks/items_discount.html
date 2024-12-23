@@ -1,0 +1,32 @@
+{% load static %}  
+<div class="container-fluid discount_field pb-3"> <!-- discount_field Скидки года! -->
+ 
+    <div class="field_text">Скидки года!</div>
+
+    <div class="container-fluid d-flex justify-content-center flex-wrap">  <!-- Группа карточек с товарами -->
+    
+    {% for i in ""|rjust:"12" %}
+      <div class="d-flex flex-column single_card">
+        <a href="#" class="text-decoration-none">
+          <div class="mt-3 mb-3 card_favorite_container">
+            <img src="icons/items_for_selling/discount/watch.jpg" alt="1" class="single_card_img">  
+            <button>
+              <svg class="card_favorite_icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.976 23.614 4.595 14.23a5.689 5.689 0 0 1 0-8.043 5.685 5.685 0 0 1 8.04 0l1.341 1.34 1.34-1.34a5.685 5.685 0 0 1 8.041 0 5.689 5.689 0 0 1 0 8.043l-9.381 9.384Z" stroke="#000" stroke-width="3.4" stroke-linejoin="round"></path></svg>
+            </button>          
+          </div>          
+          <div class="d-flex fs-5 justify-content-start ms-3 mb-2 text-nowrap ">
+            <div class="d-flex card_current_price_text">
+              <span>123 111 ₽</span> 
+            </div>
+            <div class="d-flex align-items-center">
+              <span class="text-decoration-line-through card_old_price_text">199 222 1 ₽</span>   
+            </div>
+            <span class="card_discount_text">-87%</span>
+          </div>
+          <div class="card_descr_text mb-2 ms-3 me-2">Супер-пупер часики из чистого золота Lorem</div>   
+        </a>
+      </div>
+    {% endfor %}      
+
+    </div> <!-- Закрытие Группа карточек с товарами -->
+  </div> <!-- Закрытие discount_field Скидки года! -->

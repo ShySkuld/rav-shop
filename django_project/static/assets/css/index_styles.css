@@ -1,0 +1,380 @@
+
+@font-face {
+    font-family: Ubuntu;
+    src: url('../fonts/ubuntu-fonts/Ubuntu-M.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Стили для маленьких экранов (768)*/ 
+@media (max-width: 1060px) { 
+    .hide-me { 
+      display: none !important;       
+    }
+
+    .search-fs {
+        margin-left: 10px;
+    }
+  } 
+
+body {
+    background-color: #ffe6e6;
+}  
+
+/* Верхняя инфо полоса */
+
+header {
+    padding-top: 4px;
+}
+
+.header_text {
+    margin: 0 1rem;
+}
+
+.header_text_decoration {
+    text-decoration: none;
+    color: gray;
+}
+
+.header_text_decoration:hover {
+    color: white;
+}
+
+.top-info {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: black; 
+}
+
+.header_balance {
+    padding-top: 0.3rem;
+    padding-right: 1rem;
+    min-width: 160px;
+}
+
+.money_balance {
+    text-decoration: none;
+    display: flex;
+}
+
+.money_balance::before {
+    content: url(../images/wallet.svg);
+    height: 24px;
+    margin-right: 0.5rem;
+}
+
+.money_decoration {  /* RUB */
+    text-decoration: none;
+    color: white;
+    background-color: rgba(255, 255, 255, .2);
+    padding: 3px 8px;
+    border-radius: 20px;
+}
+
+.right_money a {
+    color: white;
+}
+
+/* Верхняя нав-полоса ПОИСК  */
+
+.form-control {
+    height: 3rem;
+}
+
+.rav-logo {
+    background-color: white;
+    border-radius: 15px;
+    margin-left: 0.8rem;
+    margin-right: 1.5rem;
+    margin-bottom: 2px;
+}
+
+.catalog-logo {
+    background-color: white;
+    border-radius: 10px;
+    margin-left: 0.6rem;
+    margin-right: 1.5rem;
+    margin-bottom: 2px;
+    padding-left: 0.6rem;
+    padding-top: 1px;
+}
+
+.dropdown-menu {
+    width: 90%;
+    max-width: 250px;
+ }
+
+.catalog-word {
+    font-family: Ubuntu, 'Courier New', Courier, monospace;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: lightblue;
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+    transform:translate3d(0,-1px,0);
+}
+
+.search-fs {
+    font-size: 20px;
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+}
+
+.form-control:focus {
+    border-color: #FF0000;
+    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
+  }
+
+.search_btn {
+    margin-right: 2rem;
+    margin-left: 1rem;
+    background-color: black;
+    width: 6rem;
+    border-radius: 20px;
+    border: solid 1px gray;
+}
+
+.catalog-button:hover {
+    border-color: white;
+    background-color: black;
+}
+
+.search_btn:hover {
+    background-color: black;
+    border-color: #FF0000;
+    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
+}
+
+.search_btn:active {
+    background-color: #292929 !important;
+    border-color: #292929 !important;
+}
+
+.search_icon {
+    fill: gray;
+}
+
+.header-icons {
+    gap: 26px;
+    margin-top: 5px;
+    margin-right: 2rem; 
+}
+
+.a-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 54px;
+    height: 54px;
+} 
+
+.svg-icon {
+    fill: gray;
+}
+
+.svg-icon:hover {
+    fill: white;
+}
+
+.span-number {
+    max-width: 100%;
+    background-color: #f91155;
+    border-radius: 8px;
+    color: #fff;
+    height: 16px;
+    line-height: 16px;
+    padding: 0 9px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.red-deco:hover {
+    background-color: white;
+    border-color: #FF0000;
+    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
+}
+
+.btn-dark {
+    margin-left: 1rem;
+    border: solid 1px gray;
+    width: 5rem;
+}
+
+.red-deco-btn:hover {
+    background-color: black;
+    border-color: #FF0000;
+    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
+}
+
+.red-deco-btn:active {
+    background-color: #292929 !important;
+}
+
+ /* Карусель */ 
+ 
+.carousel-control-prev-icon {
+    width: 50px;
+    height: 50px;
+    background-image: url(../images/slider/arrow_circle_left.svg);
+    background-size: 4rem;
+ }
+  
+.carousel-control-next-icon {
+    width: 50px;
+    height: 50px;
+    background-image: url(../images/slider/arrow_circle_right.svg);
+    background-size: 4rem;
+}
+
+/* Карточки с товаром */
+
+    /* Поле со скидками */
+
+    .discount_field {
+        background-color: rgb(255,246,245);
+        border-radius: 24px;
+    }
+
+    .field_text {
+        text-align: left;
+        padding: 0.5rem 0 1rem 1rem;
+        font-family: ubuntu, 'Courier New', Courier, monospace;
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+
+/* Реклама (3 блока) между блоков с товарами */
+
+.adv_card_img {
+    border-radius: 16px;    
+}
+
+/* recomended_field */
+
+    /* Одна карточка */
+
+    .single_card {
+        width: calc(15% - 16px);
+        min-width: 13rem;
+        margin: 6px 12px 8px 12px;
+        background-color: white;
+        border-radius: 16px;
+        box-shadow: 0 1px 2px #00000029;
+    }
+
+    .single_card_img {
+        object-fit: cover;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+    }
+
+    .card_favorite_container {
+        position: relative;  
+    }
+
+    .card_favorite_container button {
+        margin-right: 0.4rem;
+        background-color: white;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+    .card_favorite_icon:hover {
+        fill: red;
+    }  
+
+    .card_current_price_text,
+    .card_discount_text {
+        font-family: ubuntu, 'Courier New', Courier, monospace;
+        font-weight: 600;
+        color: red;
+        font-size: 0.9rem;
+        margin-right: 0.6rem;
+    }
+
+    .card_old_price_text {
+        color: gray;
+        font-weight: 600;
+        font-size: 0.8rem;
+        margin-right: 0.6rem;
+    }
+
+    .card_descr_text {
+        color: black;
+        font-family: ubuntu, 'Courier New', Courier, monospace;
+        font-size: 0.9rem;
+        font-weight: 400;
+
+        /* Скрыть текст после 2 строк*/
+        overflow: hidden;
+        height: 2.2rem;
+        line-height: 1.1rem;
+    }
+
+
+/* Футер */
+
+.footer_container {
+    position: relative;
+    background-color: black;
+    margin-top: 1rem;
+}
+
+.feedbacks {
+    padding-top: 1rem;
+}
+
+.single_feedback_card {
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+    background-color: white;
+    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
+    width: 22%;
+    min-width: 14rem;
+    height: 16rem;     
+}
+
+.feedback_img {
+    margin: 4px;
+}
+
+.feedback_grade {
+    padding-left: 4px;
+    padding-top: 6px;
+    margin-right: 6px;
+}
+
+.feedback_text {
+    padding: 8px;
+    font-size: 0.9rem;
+    overflow: hidden;
+} 
+
+.footer_text {
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+    margin: 0 1rem;    
+    text-decoration: none;
+    color: white;
+}
+
+.footer_text_info {
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+    margin: 0 1rem;    
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    border-top: 1px solid red;
+}
+
+
+
+
+
+
+
+ 

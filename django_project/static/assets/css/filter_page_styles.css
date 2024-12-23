@@ -1,0 +1,361 @@
+@font-face {
+    font-family: Ubuntu;
+    src: url('ubuntu-fonts/Ubuntu-M.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Стили для маленьких экранов */ 
+@media (max-width: 1060px) { 
+    .hide-me { 
+      display: none !important;       
+    }
+
+    .filter {
+        top: 10px !important;
+    }
+ 
+
+    .search-fs {
+        margin-left: 10px;
+    }
+
+
+  } 
+
+body {
+    background-color: #ffe6e6;
+}  
+
+/* Верхняя инфо полоса */
+
+header {
+    padding-top: 4px;
+}
+
+.header_text {
+    margin: 0 1rem;
+}
+
+.header_text_decoration {
+    text-decoration: none;
+    color: gray;
+}
+
+.header_text_decoration:hover {
+    color: white;
+}
+
+.top-info {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: black;
+}
+
+.header_balance {
+    padding-top: 0.3rem;
+    padding-right: 1rem;
+    min-width: 160px;
+}
+
+.money_balance {
+    text-decoration: none;
+    display: flex;
+}
+
+.money_balance::before {
+    content: url(./icons/wallet.svg);
+    height: 24px;
+    margin-right: 0.5rem;
+}
+
+.money_decoration {  /* RUB */
+    text-decoration: none;
+    color: white;
+    background-color: rgba(255, 255, 255, .2);
+    padding: 3px 8px;
+    border-radius: 20px;
+}
+
+.right_money a {
+    color: white;
+}
+
+/* Верхняя нав-полоса ПОИСК  */
+
+.form-control {
+    height: 3rem;
+}
+
+.rav-logo {
+    background-color: white;
+    border-radius: 15px;
+    margin-left: 0.8rem;
+    margin-right: 1.5rem;
+    margin-bottom: 2px;
+}
+
+.catalog-logo {
+    background-color: white;
+    border-radius: 10px;
+    margin-left: 0.6rem;
+    margin-right: 1.5rem;
+    margin-bottom: 2px;
+    padding-left: 0.6rem;
+    padding-top: 1px;
+}
+
+.dropdown-menu {
+    width: 90%;
+    max-width: 250px;
+ }
+
+.catalog-word {
+    font-family: Ubuntu, 'Courier New', Courier, monospace;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: lightblue;
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+    transform:translate3d(0,-1px,0);
+}
+
+.search-fs {
+    font-size: 20px;
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+  
+}
+
+.form-control:focus {
+    border-color: #FF0000;
+    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
+  }
+
+.search_btn {
+    margin-right: 2rem;
+    margin-left: 1rem;
+    background-color: black;
+    width: 6rem;
+    border-radius: 20px;
+    border: solid 1px gray;
+}
+
+.catalog-button:hover {
+    border-color: white;
+    background-color: black;
+}
+
+.search_btn:hover {
+    background-color: black;
+    border-color: #FF0000;
+    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
+}
+
+.search_btn:active {
+    background-color: #292929 !important;
+    border-color: #292929 !important;
+}
+
+.search_icon {
+    fill: gray;
+}
+
+.header-icons {
+    gap: 26px;
+    margin-top: 5px;
+    margin-right: 2rem; 
+}
+
+.a-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 54px;
+    height: 54px;
+} 
+
+.svg-icon {
+    fill: gray;
+}
+
+.svg-icon:hover {
+    fill: white;
+
+}
+
+.span-number{
+    max-width: 100%;
+    background-color: #f91155;
+    border-radius: 8px;
+    color: #fff;
+    height: 16px;
+    line-height: 16px;
+    padding: 0 9px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.red-deco:hover {
+    background-color: white;
+    border-color: #FF0000;
+    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
+}
+
+.btn-dark {
+    margin-left: 1rem;
+    border: solid 1px gray;
+    width: 5rem;
+}
+
+.red-deco-btn:hover,
+.card_buy_button:hover {
+    background-color: black;
+    border-color: #FF0000;
+    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
+}
+
+.red-deco-btn:active {
+    background-color: #292929 !important;
+}
+
+/* Контейнер для карточек */
+
+.card_container {
+    width: calc(100% - 2rem);
+    min-width: 1060px;
+    margin: 1rem; 
+    background-color: white;
+    border-radius: 16px;  
+}
+
+/*  Левая полоса с фильтрами   */
+.card {
+    border: none;
+}
+
+.card-body {
+    padding-top: 0.5rem !important;
+}
+
+.btn-dark {
+    width: 90%;
+}
+
+.form-check-input:checked {
+    background-color: black; 
+}
+
+.filter {
+    margin-top: 0.5rem;
+    position: sticky;
+    top: 60px;
+}
+
+/* Правая сторона с результатом фильтров */
+
+.filter_result {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+/*     background-color: aqua;
+    border: solid 1px black; */
+    width: calc(100% - 18rem);
+    height: calc(100% - 1rem);
+ 
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;  
+}
+
+
+.single_card {
+    height: 400px;
+    width: calc(25% - 1rem);
+    max-width: 25% ;
+    margin: 0.5rem;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow:  0 0 2px rgba(255, 0, 0, 0.8);
+}
+
+.single_card_img {
+/*     object-fit: cover; */
+    display: block;
+    width: 150px !important;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    max-height: 100%;
+    width: 60%;
+}
+
+.card_favorite_container {
+    position: relative;  
+}
+
+.card_favorite_container button {
+    margin-right: 0.4rem;
+    background-color: white;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+.card_favorite_icon:hover {
+    fill: red;
+}  
+
+.card_current_price_text,
+.card_discount_text {
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+    font-weight: 600;
+    color: red;
+    font-size: 0.9rem;
+    margin-right: 0.6rem;
+}
+
+.card_old_price_text {
+    color: gray;
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin-right: 0.6rem;
+}
+
+.card_descr_text {
+    text-align: center;
+    color: black;
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    font-weight: 400;
+
+    /* Скрыть текст после 2 строк*/
+    overflow: hidden;
+    height: 2.2rem;
+    line-height: 1.1rem;
+}
+
+
+.card_buy_button {
+    margin-right: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+
+
+/* Футер фраза */
+
+.footer_container {
+    background-color: black;
+    margin-top: 1rem;
+}
+
+.footer_text_info {
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+    margin: 0 1rem;    
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    border-top: 1px solid red;
+}

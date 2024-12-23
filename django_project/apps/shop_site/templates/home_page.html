@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block top_side %} 
+    {% include 'blocks/top_info_row.html' %} 
+    {% include 'blocks/search_row.html' %}
+    {% include 'blocks/carousel.html' %}    
+{% endblock top_side %}
+ 
+{% block content %}
+    {% include 'blocks/items_discount.html' %}        
+    {% include 'blocks/middle_adv.html' %}        
+    {% include 'blocks/items_for_you.html' %}
+{% endblock content %}  
+ 
+{% block footer  %}    
+    {% include 'blocks/footer.html' %}  
+{% endblock footer  %}
+ 
