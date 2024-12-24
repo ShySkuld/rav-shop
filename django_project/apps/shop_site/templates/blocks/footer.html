@@ -1,4 +1,5 @@
- <div class="container-fluid footer_container "> <!-- Footer контейнер -->
+{% load static %} 
+<div class="container-fluid footer_container "> <!-- Footer контейнер -->
 
   <div class="container-fluid d-flex justify-content-center flex-wrap feedbacks"> <!-- Отзывы -->
 
@@ -10,11 +11,9 @@
         <div class="feedback_grade">       
           <span class="feedback_name"> Марк Дунин, Москва</span>
           <div class="d-flex justify-content-around">
-            <img src="icons/rate_star.svg" alt="star" width="25">
-            <img src="icons/rate_star.svg" alt="star" width="25">
-            <img src="icons/rate_star.svg" alt="star" width="25">
-            <img src="icons/rate_star.svg" alt="star" width="25">
-            <img src="icons/rate_star.svg" alt="star" width="25">
+            {% for _ in ''|rjust:5 %}
+                <img src="{% static 'assets/images/rate_star.svg' %}" alt="star" width="25"> 
+            {% endfor %}
           </div>
         </div> 
 
@@ -69,7 +68,7 @@
     </div>
      
      <div class="feedback_text">
-      Хорошо, что в России еще остались такие гениальные разработчики сайтов!!!!!!!!!!!
+      Хорошо, что в России еще остались такие талантливые ребята!!!!!!!!!!!
      </div>
 
     </div> <!-- Карточка отзыва 3-->
