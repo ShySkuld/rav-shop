@@ -1,0 +1,52 @@
+/* Футер */
+
+.footer_container {
+    position: relative; /*only in index*/
+    background-color: black;
+    margin-top: 1rem;
+}
+
+.feedbacks {
+    padding-top: 1rem;
+}
+
+.single_feedback_card {
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+    background-color: white;
+    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
+    width: 22%;
+    min-width: 14rem;
+    height: 16rem;
+}
+
+.feedback_img {
+    margin: 4px;
+}
+
+.feedback_grade {
+    padding-left: 4px;
+    padding-top: 6px;
+    margin-right: 6px;
+}
+
+.feedback_text {
+    padding: 8px;
+    font-size: 0.9rem;
+    overflow: hidden;
+}
+
+.footer_text {
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+    margin: 0 1rem;
+    text-decoration: none;
+    color: white;
+}
+
+.footer_text_info {
+    font-family: ubuntu, 'Courier New', Courier, monospace;
+    margin: 0 1rem;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    border-top: 1px solid red;
+}

@@ -1,0 +1,56 @@
+/* Верхняя инфо полоса */
+
+header {
+    padding-top: 4px;
+}
+
+.header_text {
+    margin: 0 1rem;
+}
+
+.header_text_decoration {
+    text-decoration: none;
+    color: gray;
+}
+
+.header_text_decoration:hover {
+    color: white;
+}
+
+.top-info {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: black;
+}
+
+.header_balance {
+    padding-top: 0.3rem;
+    padding-right: 1rem;
+    min-width: 160px;
+}
+
+.money_balance {
+    text-decoration: none;
+    display: flex;
+}
+
+.money_balance::before {
+    content: url(../images/wallet.svg);
+    height: 24px;
+    margin-right: 0.5rem;
+}
+
+.money_decoration {  /* RUB */
+    text-decoration: none;
+    color: white;
+    background-color: rgba(255, 255, 255, .2);
+    padding: 3px 8px;
+    border-radius: 20px;
+}
+
+.right_money a {
+    color: white;
+}
+
+
+

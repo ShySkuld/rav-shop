@@ -1,18 +1,39 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block top_side %} 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'assets/css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/pop_up.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/adapt.css' %}">
+    <link rel="stylesheet" href={% static 'assets/css/top_info.css' %}>
+    <link rel="stylesheet" href="{% static 'assets/css/top_search.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/adv.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/single_card.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/discount_field.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/footer.css' %}">
+{% endblock css %}
+
+{% block top_side %}
+    <h1 style="display: none;">RAV Shop</h1>
     {% include 'blocks/top_info_row.html' %} 
     {% include 'blocks/search_row.html' %}
     {% include 'blocks/carousel.html' %}    
-{% endblock top_side %}
- 
+{% endblock top_side %} 
+
 {% block content %}
+    <div class="container-fluid d-flex flex-column mt-4" > <!-- Главный контейнер -->
     {% include 'blocks/items_discount.html' %}        
     {% include 'blocks/middle_adv.html' %}        
     {% include 'blocks/items_for_you.html' %}
-{% endblock content %}  
- 
+    </div> <!-- Закрытие Главный контейнер --> 
+{% endblock content %}
+
 {% block footer  %}    
     {% include 'blocks/footer.html' %}  
 {% endblock footer  %}
+
+{% block custom_js %}
+    <script src="../../../static/assets/js/pop_up.js"></script>
+{% endblock custom_js %}
  

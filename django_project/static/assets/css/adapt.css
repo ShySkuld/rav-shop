@@ -1,0 +1,11 @@
+/* Стили для маленьких экранов (1060)*/
+
+@media (max-width: 1060px) {
+    .hide-me {
+      display: none !important;
+    }
+
+    .search-fs {
+        margin-left: 10px;
+    }
+  }

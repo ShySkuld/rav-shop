@@ -1,0 +1,63 @@
+/* Одна карточка */
+
+    .single_card {
+        width: calc(15% - 16px);
+        min-width: 13rem;
+        margin: 6px 12px 8px 12px;
+        background-color: white;
+        border-radius: 16px;
+        box-shadow: 0 1px 2px #00000029;
+    }
+
+    .single_card_img {
+        object-fit: cover;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+    }
+
+    .card_favorite_container {
+        position: relative;
+    }
+
+    .card_favorite_container button {
+        margin-right: 0.4rem;
+        background-color: white;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+    .card_favorite_icon:hover {
+        fill: red;
+    }
+
+    .card_current_price_text,
+    .card_discount_text {
+        font-family: ubuntu, 'Courier New', Courier, monospace;
+        font-weight: 600;
+        color: red;
+        font-size: 0.9rem;
+        margin-right: 0.6rem;
+    }
+
+    .card_old_price_text {
+        color: gray;
+        font-weight: 600;
+        font-size: 0.8rem;
+        margin-right: 0.6rem;
+    }
+
+    .card_descr_text {
+        color: black;
+        font-family: ubuntu, 'Courier New', Courier, monospace;
+        font-size: 0.9rem;
+        font-weight: 400;
+
+        /* Скрыть текст после 2 строк*/
+        overflow: hidden;
+        height: 2.2rem;
+        line-height: 1.1rem;
+    }

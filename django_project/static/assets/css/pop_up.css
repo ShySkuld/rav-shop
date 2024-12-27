@@ -1,0 +1,52 @@
+/*Всплывающие окна Popup*/
+
+.helpDevWindow {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 35%;
+    width: 30%;
+    height: 60%;
+    background: rgb(0, 0, 0);
+    justify-content: center;
+    align-items: center;
+    border: solid 1px #FF0000;
+    box-shadow:  0 0 10px 4px rgba(194, 172, 172, 0.8);
+    z-index: 100;
+}
+
+.helpDevContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Caveat, 'Courier New', Courier, monospace;
+    font-size: 3rem;
+    color: rgb(255, 165, 0);
+}
+
+.helpDevContent span {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.helpDevContent img {
+    margin-bottom: 2rem;
+}
+
+.closePopup {
+    padding-bottom: 0.5rem;
+    width: 8rem;
+    font-family: Caveat, 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    background-color: black;
+    border-radius: 20px;
+    border: solid 1px gray;
+    color: rgb(255, 165, 0);
+    margin-bottom: 1.5rem;
+}
+
+.closePopup:hover {
+    background-color: black;
+    border-color: #FF0000;
+    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
+}

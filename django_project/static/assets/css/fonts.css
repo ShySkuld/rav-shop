@@ -1,0 +1,13 @@
+@font-face {
+    font-family: Ubuntu;
+    src: url('../fonts/ubuntu-fonts/Ubuntu-M.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Caveat;
+    src: url('../fonts/Caveat/Caveat-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
