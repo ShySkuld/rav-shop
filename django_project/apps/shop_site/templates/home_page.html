@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/pop_up.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/adapt.css' %}">
-    <link rel="stylesheet" href={% static 'assets/css/top_info.css' %}>
+    <link rel="stylesheet" href="{% static 'assets/css/top_info.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/top_search.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/carousel.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/adv.css' %}">
@@ -26,7 +26,7 @@
     {% include 'blocks/items_discount.html' %}        
     {% include 'blocks/middle_adv.html' %}        
     {% include 'blocks/items_for_you.html' %}
-    </div> <!-- Закрытие Главный контейнер --> 
+    </div> 
 {% endblock content %}
 
 {% block footer  %}    
@@ -34,6 +34,6 @@
 {% endblock footer  %}
 
 {% block custom_js %}
-    <script src="../../../static/assets/js/pop_up.js"></script>
+    <script src="{% static 'assets/js/pop_up.js' %}"></script>
 {% endblock custom_js %}
  

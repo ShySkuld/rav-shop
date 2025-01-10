@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.shop_site.apps.ShopSiteConfig',
+    'apps.users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,9 @@ TEMPLATES_DIRS = BASE_DIR / 'templates'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIRS, BASE_DIR / 'apps/shop_site'],
+        'DIRS': [TEMPLATES_DIRS,
+                 BASE_DIR / 'apps/shop_site',
+                 BASE_DIR / 'apps/users'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
