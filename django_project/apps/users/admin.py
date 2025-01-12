@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
 
-
+@admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
@@ -14,9 +14,9 @@ class CustomUserAdmin(UserAdmin):
 
     #  отображение полей в админке - Изменить Пользователь
     fieldsets = (
-        (None, {'fields': ('email', 'first_name', 'last_name', 'phone_number',
-                           'birth_date', 'avatar', 'is_superuser',
-                           'is_staff', 'is_active')}),
+        (None, {'fields': ('email', 'password', 'first_name', 'last_name',
+                           'phone_number', 'birth_date', 'avatar',
+                           'is_superuser', 'is_staff', 'is_active')}),
         ("Разрешения", {"fields": ("groups", "user_permissions")}),
     )
 
@@ -32,4 +32,4 @@ class CustomUserAdmin(UserAdmin):
         ),
     )
 
-admin.site.register(CustomUser, CustomUserAdmin)
+#admin.site.register(CustomUser, CustomUserAdmin)
