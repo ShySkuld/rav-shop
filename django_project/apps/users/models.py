@@ -5,9 +5,9 @@ from .manager import CustomUserManager
 
 
 class CustomUser(AbstractUser):
-    # иначе будет ОШИБКА:  повторяющееся значение ключа нарушает
-    # ограничение уникальности
     username = None
+    # ↑↑↑ иначе будет ОШИБКА:  повторяющееся значение ключа нарушает
+    # ограничение уникальности
 
     email = models.EmailField(max_length=255,
                               verbose_name='Электронный адрес',
@@ -15,7 +15,8 @@ class CustomUser(AbstractUser):
     birth_date = models.DateField(blank=True,
                                   null=True,
                                   verbose_name='Дата рождения')
-    avatar = models.ImageField(upload_to='users/avatars/%Y/%m/%d',
+    avatar = models.ImageField(default='users/avatars/default_avatar.png',
+                               upload_to='users/avatars/%Y/%m/%d',
                                blank=True,
                                verbose_name='Аватар')
     balance = models.DecimalField(max_digits=10,

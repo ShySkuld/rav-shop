@@ -11,7 +11,7 @@ class CustomUserCreationForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ("email",)
+        fields = '__all__'
 
     def clean_password2(self):
         # Оба пароля совпадают
@@ -40,4 +40,4 @@ class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ("email",)
+        fields = '__all__'
