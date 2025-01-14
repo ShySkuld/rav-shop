@@ -40,7 +40,7 @@ class Cart(models.Model):
     """Корзина"""
 
     product = models.ForeignKey(Product,
-                                default='product has been deleted',
+                                default=0,
                                 on_delete=models.SET_DEFAULT,
                                 verbose_name='Товар')
     count = models.IntegerField(default=0,
@@ -73,7 +73,7 @@ class Favorite(models.Model):
     """Избранное"""
 
     product = models.ForeignKey(Product,
-                                default='product does not exist',
+                                default=0,
                                 on_delete=models.SET_DEFAULT,
                                 verbose_name='Товар')
     user = models.ForeignKey(settings.AUTH_USER_MODEL,

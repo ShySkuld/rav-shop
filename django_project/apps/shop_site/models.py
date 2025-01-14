@@ -10,7 +10,9 @@ class Product(models.Model):
                             unique=True,
                             db_index=True,
                             verbose_name='Слаг')
-    title = models.CharField(max_length=100, verbose_name='Товар')
+    name = models.CharField(max_length=100, verbose_name='Товар')
+    model = models.CharField(max_length=100,
+                             verbose_name='Модель')
     country = models.ForeignKey('ManufacturerCountry',
                                 on_delete=models.DO_NOTHING,
                                 blank=True,
@@ -32,14 +34,15 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
-        ordering = ('title',)
+        ordering = ('name',)
+
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(unidecode(self.title))
+        self.slug = slugify(unidecode(self.model))
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.title
+        return f'ID = {self.id} - {self.name} {self.model}'
 
     def get_absolute_url(self):
         return reverse('product', kwargs={'product_slug': self.slug})
@@ -48,11 +51,17 @@ class Product(models.Model):
 class Category(models.Model):
     """Категория - часы, утюги, холодильники т.п."""
 
-    name = models.CharField(max_length=100, verbose_name='Категория')
+    name = models.CharField(max_length=100,
+                            verbose_name='Категория',
+                            unique=True)
 
     class Meta:
         verbose_name = 'Категорию'
         verbose_name_plural = 'Категории'
+        ordering = ('name', )
+
+    def __str__(self):
+        return self.name
 
 
 class ManufacturerCountry(models.Model):
@@ -94,13 +103,17 @@ class Photo(models.Model):
     product = models.ForeignKey('Product',
                                 on_delete=models.CASCADE,
                                 verbose_name='Товар')
+
     photo = models.ImageField(upload_to='products/photo/%Y/%m/%d',
                               blank=True,
                               verbose_name='Фотография')
 
     class Meta:
-        verbose_name = 'Фотографию'
+        verbose_name = 'Фотография'
         verbose_name_plural = 'Фотографии'
+
+    def __str__(self):
+        return self.product.name
 
 
 class PriceChange(models.Model):
@@ -113,6 +126,7 @@ class PriceChange(models.Model):
                                              verbose_name='Дата изменения цены')
     old_price = models.DecimalField(max_digits=10,
                                     decimal_places=2,
+                                    default=0,
                                     verbose_name='Старая цена')
     current_price = models.DecimalField(max_digits=10,
                                         decimal_places=2,

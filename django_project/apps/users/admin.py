@@ -10,7 +10,7 @@ from .models import CustomUser
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
-    list_display = ('email', 'phone_number', 'display_avatar', 'is_superuser',
+    list_display = ('email', 'phone_number', 'is_superuser',
                     'is_staff', 'is_active')
     readonly_fields = ('display_avatar', )  # иначе FieldError Unknown field(s)
     list_filter = ('is_superuser', 'is_staff', 'is_active')
