@@ -4,21 +4,32 @@ from django.utils.safestring import mark_safe
 from .models import *
 
 
-
-
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'id')
-    exclude = ('slug', )
+    list_display = ('id', 'subcategory', 'manufacturer', 'model', 'get_product_price')
+    exclude = ('slug', 'name')
+    list_filter = ('manufacturer', )
+
     # вызовет select_related() для загрузки данных из БД для FK
-    # list_select_related = ('manufacturer', 'category')
+    list_select_related = ('country', 'manufacturer', 'subcategory')
 
+    #  кастомное поле с ценой товара
+    def get_product_price(self, product: Product):
+        """product - <class 'apps.shop_site.models.Product'>
+        Как я понял, отрисовывает построчно, каждый раз обращаясь
+        к этой функции с разными объектми Product.
+        Возвращаю последнее изменение цены из кверисета всех изменений для
+        конкретного товара"""
 
+        return [prices.current_price for prices in product.price.all()][-1]
+
+    get_product_price.short_description = "Цена"
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
     fields = ('product', 'display_photo', 'photo')
-    list_display = ('product',  'id_product', )
+    list_display = ('product_name', 'id_product')
+
     readonly_fields = ('display_photo', )
     search_fields = ('product__id', )
     list_select_related = ('product', )
@@ -33,11 +44,20 @@ class PhotoAdmin(admin.ModelAdmin):
     def id_product(self, photo: Photo):
         return photo.product.id
 
+    @admin.display(description='Товар', ordering='product_id')
+    #  не знаю как перекастомизировать имя, пока прикручу это поле
+    def product_name(self, photo: Photo):
+        return f'{photo.product.name} {photo.product.model}'
+
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    pass
+    ordering = ('name', )
+
+@admin.register(SubCategory)
+class SubCategoryAdmin(admin.ModelAdmin):
+    list_display = ('category', 'name')
 
 
 @admin.register(ManufacturerCountry)
@@ -52,7 +72,8 @@ class ManufacturerAdmin(admin.ModelAdmin):
 
 @admin.register(PriceChange)
 class PriceChangeAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('product', 'date_price_change', 'old_price', 'current_price')
+    ordering = ('-date_price_change', )
 
 
 @admin.register(Adv)

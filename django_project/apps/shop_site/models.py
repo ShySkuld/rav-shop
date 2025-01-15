@@ -10,22 +10,23 @@ class Product(models.Model):
                             unique=True,
                             db_index=True,
                             verbose_name='Слаг')
-    name = models.CharField(max_length=100, verbose_name='Товар')
+    name = models.CharField(max_length=100,
+                            verbose_name='Товар')
+    subcategory = models.ForeignKey('SubCategory',
+                                     default=0,
+                                     on_delete=models.SET_DEFAULT,
+                                     verbose_name='Подкатегория')
     model = models.CharField(max_length=100,
                              verbose_name='Модель')
     country = models.ForeignKey('ManufacturerCountry',
                                 on_delete=models.DO_NOTHING,
                                 blank=True,
-                                null=True,
                                 verbose_name='Страна-изготовитель')
     manufacturer = models.ForeignKey('Manufacturer',
-                                     on_delete=models.CASCADE,
+                                     default=0,
+                                     on_delete=models.SET_DEFAULT,
                                      blank=True,
-                                     null=True,
                                      verbose_name='Фирма-производитель')
-    category = models.ForeignKey('Category',
-                                 on_delete=models.CASCADE,
-                                 verbose_name='Категория')
     stock_balance = models.IntegerField(default=0,
                                         verbose_name='Количество')
     description = models.TextField(blank=True,
@@ -34,7 +35,8 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
-        ordering = ('name',)
+        ordering = ('name', 'manufacturer', 'model')
+
 
 
     def save(self, *args, **kwargs):
@@ -49,15 +51,32 @@ class Product(models.Model):
 
 
 class Category(models.Model):
-    """Категория - часы, утюги, холодильники т.п."""
+    """Общая категория (товары для дома, кухни и т.п.)"""
 
     name = models.CharField(max_length=100,
                             verbose_name='Категория',
                             unique=True)
 
     class Meta:
-        verbose_name = 'Категорию'
+        verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+        ordering = ('name', )
+
+    def __str__(self):
+        return self.name
+
+class SubCategory(models.Model):
+    """Подкатегория для Общей категории"""
+
+    category = models.ForeignKey('Category',
+                                 on_delete=models.CASCADE,
+                                 verbose_name='Категория')
+    name = models.CharField(max_length=100,
+                            verbose_name='Подкатегория')
+
+    class Meta:
+        verbose_name = 'Податегория'
+        verbose_name_plural = 'Подкатегории'
         ordering = ('name', )
 
     def __str__(self):
@@ -84,7 +103,7 @@ class Manufacturer(models.Model):
     """Производитель - название фирмы (Bosh, Armani, etc)"""
 
     name = models.CharField(max_length=50,
-                            verbose_name='Фирма-производитель',
+                            verbose_name='Имя',
                             unique=True)
 
     class Meta:
@@ -105,7 +124,7 @@ class Photo(models.Model):
                                 verbose_name='Товар')
 
     photo = models.ImageField(upload_to='products/photo/%Y/%m/%d',
-                              blank=True,
+                              default='products/photo/flag_rf.jpg',
                               verbose_name='Фотография')
 
     class Meta:
@@ -121,7 +140,8 @@ class PriceChange(models.Model):
 
     product = models.ForeignKey('Product',
                                 on_delete=models.CASCADE,
-                                verbose_name='Товар')
+                                verbose_name='Товар',
+                                related_name='price')
     date_price_change = models.DateTimeField(auto_now_add=True,
                                              verbose_name='Дата изменения цены')
     old_price = models.DecimalField(max_digits=10,
@@ -133,11 +153,13 @@ class PriceChange(models.Model):
                                         verbose_name='Текущая цена')
 
     class Meta:
-        verbose_name = 'Историю изменения цены'
-        verbose_name_plural = 'Истории изменения цен'
+        verbose_name = 'Цена'
+        verbose_name_plural = 'Цены'
+
+    def __str__(self):
+        return str(self.product)
 
 #  РЕКЛАМА <<<<<<<<<<<<<<<<<<
-
 
 class Adv(models.Model):
     """Реклама"""
