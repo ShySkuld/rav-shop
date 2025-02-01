@@ -10,7 +10,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display_links = ('model', )
     exclude = ('slug', 'name')
     list_filter = ('manufacturer', 'is_published')
-    search_fields = ('id', 'subcategory', 'manufacturer', 'model')
+    search_fields = ('model', )
     list_editable = ('is_published', )
     list_per_page = 8
 
