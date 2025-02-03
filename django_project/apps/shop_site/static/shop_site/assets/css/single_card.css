@@ -14,8 +14,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 60%;
-         height: 200px;
+        width: 50%;
     }
 
     .card_favorite_container {
@@ -32,8 +31,15 @@
         right: 0;
       }
 
-    .card_favorite_icon:hover {
+    .card_favorite_icon path:hover {
         fill: red;
+    }
+
+    .card_simple_price_text {
+        font-family: ubuntu, 'Courier New', Courier, monospace;
+        font-weight: 600;
+        color: rgb(255, 165, 0);
+        text-align: center;
     }
 
     .card_current_price_text,
@@ -56,10 +62,18 @@
         color: black;
         font-family: ubuntu, 'Courier New', Courier, monospace;
         font-size: 0.9rem;
-        font-weight: 400;
+        font-weight: 300;
+        text-align: center;
 
-        /* Скрыть текст после 2 строк*/
         overflow: hidden;
         height: 2.2rem;
         line-height: 1.1rem;
+    }
+
+    .soldout {
+        opacity: 50%;
+        font-size: 1.5rem;
+        text-align: center;
+        font-weight: bold;
+        color: red;
     }

@@ -5,8 +5,11 @@
 
         <!-- Иконки слева от поиска -->
         <div class="d-flex align-items-center text-decoration-none ms-1">
-          <a href="#"><img class="rav-logo red-deco hide-me"  src="{% static 'shop_site/assets/images/rav3.jpeg' %}"
-            height="40" alt="rav-icon"></a>
+          <a href="{% url 'home' %}">
+            <img class="rav-logo red-deco hide-me"
+                 src="{% static 'shop_site/assets/images/rav3.jpeg' %}"
+                 height="40" alt="rav-icon">
+          </a>
 
           <div class="catalog-logo red-deco hide-me">
             <a href="#"><img class="catalog-logo" src="https://catalog.hkstore.com/static/version1732500414/frontend/Cleargo/Catalog/en_US/images/logo.png" alt="catalog" width="178" height="40"></a>

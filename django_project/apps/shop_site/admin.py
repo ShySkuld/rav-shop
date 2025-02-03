@@ -6,7 +6,8 @@ from .models import *
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'subcategory', 'manufacturer', 'model', 'get_product_price', 'is_published')
+    list_display = ('id', 'subcategory', 'manufacturer', 'model',
+                    'stock_balance', 'get_product_price', 'is_published')
     list_display_links = ('model', )
     exclude = ('slug', 'name')
     list_filter = ('manufacturer', 'is_published')
