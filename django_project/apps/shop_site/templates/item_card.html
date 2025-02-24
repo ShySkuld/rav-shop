@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'shop_site/assets/css/top_info.css' %}">
     <link rel="stylesheet" href="{% static 'shop_site/assets/css/top_search.css' %}">
     <link rel="stylesheet" href="{% static 'shop_site/assets/css/item_card_styles.css' %}"> 
+    <link rel="stylesheet" href="{% static 'shop_site/assets/css/single_card.css' %}">
 {% endblock css %}
 
 {% block top_side %}
@@ -21,7 +22,7 @@
 
     <div class="container-fluid d-flex flex-column mt-3" > <!-- Главный контейнер -->
       
-        <!-- breadcrumb -->
+    <!-- breadcrumb -->
       <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
@@ -35,34 +36,46 @@
               {{ product.model }}</li>
         </ol>
       </nav>
-
+        
+    <!-- Заголовок -->
+        
       <h1 class="text-center fw-bold">
-        {{ product.subcategory }} {{ product.manufacturer }} {{ product.model }} 
+       {{ product.manufacturer }} {{ product.model }}
       </h1>
 
-      <!-- Карточка с товаром -->
+    <!-- Карточка с товаром -->
 
       <div class="container-fluid d-flex mt-2"> <!-- Внешний контейнер -->
-        <div class="container card_container pt-2 pb-2"> <!-- Белый Внешний контейнер -->
+        <div class="container card_container pt-2 pb-2 mb-2"> <!-- Белый Внешний 
+        контейнер -->
           
-          <div class="d-flex card_body"> <!-- Вся инфа о товаре с фотками -->
-            <div class="d-flex flex-column justify-content-between card_item_left_photos hide-me">
-              <div class="card_item_left_photo">1</div>
-
-              <div class="card_item_left_photo">1</div>
-
-              <div class="card_item_left_photo">1</div>
-
-              <div class="card_item_left_photo">1</div>
-
-              <div class="card_item_left_photo">1</div>
+          <div class="d-flex "> <!-- Вся инфа о товаре с фотками -->
+            <div class="d-flex flex-column justify-content-start 
+              card_item_left_photos hide-me">
+                
+              {% for photo in photos %}  
+                <div class="card_item_left_photo mt-2">
+                    <img src="{{ photo.photo.url }}" 
+                         alt="{{ photo.product.model }}"
+                         width="90%"
+                         class="card_item_left_photo_img"
+                         id="small_image"
+                         onmouseover="showLargeImage(this)"> 
+                </div>
+              {% endfor %}  
 
             </div>
 
-            <div class="card_item_big_photo"></div>
+            <div class="card_item_large_photo">
+                <img src="{{ photos.0.photo.url }}" 
+                     alt="#"
+                     class="card_item_large_photo_img"
+                     id="large_image">
+            </div>
 
             <div class="d-flex flex-column card_item_descr_container"> <!-- Описание товара, цена, корзина -->
-              <div class=" card_item_short_row">11111111111111
+              <div class="card_item_params">
+                  {{ product.params }}
               </div>
 
               <div class="card_item_short_row">2
@@ -74,30 +87,49 @@
 
           </div> <!-- Инфа о товаре с фотками -->
           
-          <div class="d-flex justify-content-start align-items-center card_users_photos"> <!-- Фото покупателей -->
-            <div class="card_users_one_photo ">1
-            </div>
-            <div class="card_users_one_photo ">1              
-            </div>
-            <div class="card_users_one_photo ">1              
-            </div>
-            <div class="card_users_one_photo ">1              
-            </div>
-            <div class="card_users_one_photo ">all              
-            </div>
-          </div> <!-- Фото покупателей -->
-
         </div> <!-- Белый Внешний контейнер -->
       </div> <!-- Внешний контейнер -->
 
-      <div class="container card_container pt-2 pb-2 mt-2 mb-2"> <!-- Белый Внешний контейнер -->
-        1
+      <div class="container card_container p-4 pb-2 mt-2 mb-2"> <!-- Белый
+      Внешний контейнер Описание -->
+          &emsp;{{  product.description }}
 
       </div>
+    
+      <div class="container card_container p-4 pb-2 mt-2 mb-2"> <!-- Белый
+      Внешний контейнер - Рекомендуем для вас-->
+      <div class="field_text">Рекомендуем для вас</div>
+      
+      {% for product in items_for_you %}  
+      {% if product.is_published == "PUB" %}   
+      <div class="d-flex flex-column single_card">
+        <a href="{% url 'product' product_subcategory=product.subcategory product_slug=product.slug %}" 
+           class="text-decoration-none mt-3">
+            
+          <img src="{{ product.photo_set.all.0.photo.url }}" 
+               alt="{{ product.id }}" class="single_card_img">
+        </a>
+          
+        <div class="d-flex fs-5 justify-content-center ms-3 mb-2 text-nowrap ">
+          <div class="d-flex card_simple_price_text">               
+           {{ product.price.all.0.current_price }} ₽              
+          </div>
+        </div>
+          
+        <div class="card_descr_text mb-2 ms-3 me-2">
+          {{ product.subcategory }} {{ product.model }}
+        </div>  
+      </div>
+ 
+      {% endif %}
+      {% endfor %}    
 
+    </div> <!-- Закрытие Белый Внешний контейнер - Рекомендуем для вас-->
 
-
+    
     </div> <!-- Закрытие Главный контейнер -->
+    
+ 
 
     <footer class="py-3  align-items-center footer_container">
       <p class="text-center pt-2 text-wrap footer_text_info">
@@ -114,4 +146,7 @@
 
 {% block custom_js %}
     <script src="{% static 'shop_site/assets/js/pop_up.js' %}"></script>
+    <script 
+        src="{% static 'shop_site/assets/js/get_image_larger_in_card.js' %}">    
+    </script>
 {% endblock custom_js %}

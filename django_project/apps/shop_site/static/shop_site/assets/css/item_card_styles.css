@@ -1,275 +1,63 @@
-@font-face {
-    font-family: Ubuntu;
-    src: url('ubuntu-fonts/Ubuntu-M.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* Стили для маленьких экранов (768)*/ 
-@media (max-width: 1060px) { 
-    .hide-me { 
-      display: none !important;       
-    }
-
-    .search-fs {
-        margin-left: 10px;
-    }
-
-
-  } 
-
-body {
-    background-color: #ffe6e6;
-}  
-
-/* Верхняя инфо полоса */
-
-header {
-    padding-top: 4px;
-}
-
-.header_text {
-    margin: 0 1rem;
-}
-
-.header_text_decoration {
-    text-decoration: none;
-    color: gray;
-}
-
-.header_text_decoration:hover {
-    color: white;
-}
-
-.top-info {
-    padding-left: 0;
-    padding-right: 0;
-    background-color: black;
-}
-
-.header_balance {
-    padding-top: 0.3rem;
-    padding-right: 1rem;
-    min-width: 160px;
-}
-
-.money_balance {
-    text-decoration: none;
-    display: flex;
-}
-
-.money_balance::before {
-    content: url(./icons/wallet.svg);
-    height: 24px;
-    margin-right: 0.5rem;
-}
-
-.money_decoration {  /* RUB */
-    text-decoration: none;
-    color: white;
-    background-color: rgba(255, 255, 255, .2);
-    padding: 3px 8px;
-    border-radius: 20px;
-}
-
-.right_money a {
-    color: white;
-}
-
-/* Верхняя нав-полоса ПОИСК  */
-
-.form-control {
-    height: 3rem;
-}
-
-.rav-logo {
-    background-color: white;
-    border-radius: 15px;
-    margin-left: 0.8rem;
-    margin-right: 1.5rem;
-    margin-bottom: 2px;
-}
-
-.catalog-logo {
-    background-color: white;
-    border-radius: 10px;
-    margin-left: 0.6rem;
-    margin-right: 1.5rem;
-    margin-bottom: 2px;
-    padding-left: 0.6rem;
-    padding-top: 1px;
-}
-
-.dropdown-menu {
-    width: 90%;
-    max-width: 250px;
- }
-
-.catalog-word {
-    font-family: Ubuntu, 'Courier New', Courier, monospace;
-}
-
-.form-control::-webkit-input-placeholder {
-    color: lightblue;
-    font-family: ubuntu, 'Courier New', Courier, monospace;
-    transform:translate3d(0,-1px,0);
-}
-
-.search-fs {
-    font-size: 20px;
-    font-family: ubuntu, 'Courier New', Courier, monospace;
-  
-}
-
-.form-control:focus {
-    border-color: #FF0000;
-    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
-  }
-
-.search_btn {
-    margin-right: 2rem;
-    margin-left: 1rem;
-    background-color: black;
-    width: 6rem;
-    border-radius: 20px;
-    border: solid 1px gray;
-}
-
-.catalog-button:hover {
-    border-color: white;
-    background-color: black;
-}
-
-.search_btn:hover {
-    background-color: black;
-    border-color: #FF0000;
-    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
-}
-
-.search_btn:active {
-    background-color: #292929 !important;
-    border-color: #292929 !important;
-}
-
-.search_icon {
-    fill: gray;
-}
-
-.header-icons {
-    gap: 26px;
-    margin-top: 5px;
-    margin-right: 2rem; 
-}
-
-.a-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 54px;
-    height: 54px;
-} 
-
-.svg-icon {
-    fill: gray;
-}
-
-.svg-icon:hover {
-    fill: white;
-
-}
-
-.span-number{
-    max-width: 100%;
-    background-color: #f91155;
-    border-radius: 8px;
-    color: #fff;
-    height: 16px;
-    line-height: 16px;
-    padding: 0 9px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 13px;
-    font-weight: 800;
-}
-
-.red-deco:hover {
-    background-color: white;
-    border-color: #FF0000;
-    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
-}
-
-.btn-dark {
-    margin-left: 1rem;
-    border: solid 1px gray;
-    width: 5rem;
-}
-
-.red-deco-btn:hover {
-    background-color: black;
-    border-color: #FF0000;
-    box-shadow:  0 0 10px 4px rgba(255, 0, 0, 0.8);
-}
-
-.red-deco-btn:active {
-    background-color: #292929 !important;
-}
-
 /* Контейнер для карточек */
 
 .card_container {
+    font-size: 1.5rem;
+    font-family: ubuntu, 'Courier New', Courier, monospace;
     background-color: white;
-    height: 40rem;
-    border-radius: 16px;
-   
-}
 
-.card_body {
-    background-color: green;
-    height: 75%;
+    border-radius: 16px;
 }
 
 .card_item_left_photos {
-    background-color: lightblue;
     width: 8%;
 }
 
 .card_item_left_photo {
-    border: solid 1px black;
+    border-radius: 10px;
     height: 20%;
 }
 
-.card_item_big_photo {
-    background-color: lightcoral;
+.card_item_left_photo_img {
+    padding: 5px;
+}
+
+.card_item_left_photo_img:hover {
+    border-radius: 10%;
+    border-color: #FF0000;
+    box-shadow:  0 0 10px 2px rgba(255, 0, 0, 0.8);
+}
+
+.card_item_large_photo {
+    display: flex;
+    justify-content: center;
     width: 37%;
+
+}
+
+.card_item_large_photo_img {
+    width: 100%;
 }
 
 .card_item_descr_container {
     min-width: 55%;    
 }
 
-.card_item_short_row {
-    background-color: lightslategrey;
-    border: solid 1px black;
-    margin: 5px;
-
+.card_item_params {
+    font-size: 1rem;
+    font-weight: 100;
+    margin: 10px 10px 10px 20px;
 }
 
 
-
-.card_users_photos {
-    background-color: blue;
-    height: 20%;
-}
 
 .card_users_one_photo {
     border: solid 1px black;
     background-color: white;
     width: 15%;
     height: 100%;
-    
 }
 
+/* Футер полоса */
 .footer_container {
     background-color: black;
     margin-top: 1rem;
@@ -282,4 +70,9 @@ header {
     color: white;
     font-size: 14px;
     border-top: 1px solid red;
+}
+
+.field_text {
+    font-size: 1.2rem;
+    font-weight: bold;
 }

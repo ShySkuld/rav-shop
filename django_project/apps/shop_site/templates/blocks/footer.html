@@ -4,12 +4,14 @@
   <div class="container-fluid d-flex justify-content-center flex-wrap feedbacks"> <!-- Отзывы -->
 
     <div class="d-flex flex-column me-3 mt-2 mb-2 single_feedback_card hide-me"> <!-- Карточка отзыва 1-->
-       <div class="d-flex"> 
-        
-        <img class="feedback_img" src="icons/feedback_photo/1.jpg" alt="" width="64" height="64">
+       <div class="d-flex">        
+        <img class="feedback_img" src="{{ MEDIA_URL }}avatars/footer/dunin.jpg"
+             alt="dunin" 
+             width="64" 
+             height="64">
         
         <div class="feedback_grade">       
-          <span class="feedback_name"> Марк Дунин, Москва</span>
+          <span class="feedback_name"> Венцеслав Дунин,  Москва</span>
           <div class="d-flex justify-content-around">
             {% for _ in ''|rjust:5 %}
                 <img src="{% static 'shop_site/assets/images/rate_star.svg' %}" alt="star" width="25">
@@ -29,16 +31,17 @@
     <div class="d-flex flex-column me-3 mt-2 mb-2 single_feedback_card"> <!-- Карточка отзыва 2-->
       <div class="d-flex"> 
        
-       <img class="feedback_img" src="icons/feedback_photo/2.jpg" alt="" width="64" height="64">
+       <img class="feedback_img" src="{{ MEDIA_URL}}avatars/footer/tretak.jpg"
+            alt="tretak" 
+            width="64" 
+            height="64">
        
        <div class="feedback_grade">       
-         <span class="feedback_name"> Иван Третьяк, Краснодар</span>
+         <span class="feedback_name"> Иван Третьяк,  Краснодар</span>
          <div class="d-flex justify-content-around">
-           <img src="icons/rate_star.svg" alt="star" width="25">
-           <img src="icons/rate_star.svg" alt="star" width="25">
-           <img src="icons/rate_star.svg" alt="star" width="25">
-           <img src="icons/rate_star.svg" alt="star" width="25">
-           <img src="icons/rate_star.svg" alt="star" width="25">
+           {% for _ in ''|rjust:5 %}
+             <img src="{% static 'shop_site/assets/images/rate_star.svg' %}" alt="star" width="25">
+           {% endfor %}
          </div>
        </div>      
 
@@ -53,16 +56,17 @@
    <div class="d-flex flex-column me-3 mt-2 mb-2 single_feedback_card hide-me"> <!-- Карточка отзыва 3-->
     <div class="d-flex"> 
      
-     <img class="feedback_img" src="icons/feedback_photo/3.jpg" alt="" width="64" height="64">
+     <img class="feedback_img" src="{{ MEDIA_URL}}avatars/footer/pupkin.png"
+          alt="" 
+          width="64" 
+          height="64">
      
      <div class="feedback_grade">       
-       <span class="feedback_name"> Дмитрий Пупкин, Москва</span>
+       <span class="feedback_name"> Пак Пуп Кин,  Москва</span>
        <div class="d-flex justify-content-around">
-         <img src="icons/rate_star.svg" alt="star" width="25">
-         <img src="icons/rate_star.svg" alt="star" width="25">
-         <img src="icons/rate_star.svg" alt="star" width="25">
-         <img src="icons/rate_star.svg" alt="star" width="25">
-         <img src="icons/rate_star.svg" alt="star" width="25">
+         {% for _ in ''|rjust:5 %}
+           <img src="{% static 'shop_site/assets/images/rate_star.svg' %}" alt="star" width="25">
+         {% endfor %}
        </div>
      </div>      
 
@@ -77,23 +81,25 @@
     <div class="d-flex flex-column me-3 mt-2 mb-2 single_feedback_card"> <!-- Карточка отзыва 4-->
       <div class="d-flex"> 
       
-      <img class="feedback_img" src="icons/feedback_photo/4.png" alt="" width="64" height="64">
+      <img class="feedback_img" src="{{ MEDIA_URL}}avatars/footer/milosh.png"
+           alt="milosh" 
+           width="64" 
+           height="64">
       
       <div class="feedback_grade">       
         <span class="feedback_name"> Стефан Милош, Польша</span>
         <div class="d-flex justify-content-around">
-          <img src="icons/rate_star.svg" alt="star" width="25">
-          <img src="icons/rate_star.svg" alt="star" width="25">
-          <img src="icons/rate_star.svg" alt="star" width="25">
-          <img src="icons/rate_star.svg" alt="star" width="25">
-          <img src="icons/rate_star.svg" alt="star" width="25">
+           {% for _ in ''|rjust:5 %}
+             <img src="{% static 'shop_site/assets/images/rate_star.svg' %}" alt="star" width="25">
+           {% endfor %}
         </div>
       </div>      
 
       </div>
       
       <div class="feedback_text">
-        Мы всей Польшей завидуем гениальности разработчика этого сайта. Bobr kurwa!!!
+        Мы всей Польшей завидуем гениальности разработчика этого сайта.
+        BOBR KURWA!!!
       </div>
 
     </div> <!-- Карточка отзыва 4-->
@@ -101,6 +107,8 @@
   </div> <!-- Отзывы -->
 
   <footer class="py-3  align-items-center">
-    <p class="text-center pt-2 text-wrap footer_text_info">© 2024 Разработчик не несет ответственности за размещаемые Пользователями материалы (в т.ч. информацию и изображения), их содержание и качество.</p>
+    <p class="text-center pt-2 text-wrap footer_text_info">
+    © 2024 Разработчик не несет ответственности за размещаемые Пользователями
+    материалы (в т.ч. информацию и изображения), их содержание и качество.</p>
   </footer>
 </div> <!-- Footer контейнер -->

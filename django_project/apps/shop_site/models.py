@@ -1,6 +1,7 @@
-import os
+from io import BytesIO
 
-import datetime
+from .utils import resize_image_to_square
+from PIL import Image
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
@@ -20,7 +21,7 @@ class Product(models.Model):
                             unique=True,
                             db_index=True,
                             verbose_name='Слаг')
-    name = models.CharField(max_length=100,
+    params = models.CharField(max_length=200,
                             verbose_name='Товар')
     subcategory = models.ForeignKey('SubCategory',
                                      default=0,
@@ -57,8 +58,9 @@ class Product(models.Model):
         self.is_published = 'SOLD' if self.stock_balance == 0 else 'PUB'
         super().save(*args, **kwargs)
 
+
     def __str__(self):
-        return f'ID={self.id} -> {self.name} {self.model}'
+        return f'ID={self.id} -> {self.model}'
 
     def get_absolute_url(self):
         return reverse('product', kwargs={'product_slug': self.slug})
@@ -129,7 +131,6 @@ class Manufacturer(models.Model):
         return self.name
 
 
-
 class Photo(models.Model):
     """Фото товара"""
 
@@ -169,6 +170,12 @@ class Photo(models.Model):
 
     def __str__(self):
         return self.product.name
+
+    def save(self, commit=True, *args, **kwargs):
+        # Сначала вызываем стандартный метод save для появления записи в БД,
+        # потом меняю формат картинки
+        super().save(*args, **kwargs)
+        resize_image_to_square(self.photo)
 
 
 class PriceChange(models.Model):
