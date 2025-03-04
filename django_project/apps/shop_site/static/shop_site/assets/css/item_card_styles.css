@@ -50,13 +50,6 @@
 
 
 
-.card_users_one_photo {
-    border: solid 1px black;
-    background-color: white;
-    width: 15%;
-    height: 100%;
-}
-
 /* Футер полоса */
 .footer_container {
     background-color: black;

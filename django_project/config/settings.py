@@ -18,6 +18,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Переменные
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -47,6 +50,7 @@ INSTALLED_APPS = [
     'apps.cart.apps.CartConfig',
     'django_extensions',
     'debug_toolbar',
+    'dbbackup',  # django-dbbackup
 ]
 
 MIDDLEWARE = [
@@ -142,5 +146,10 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 USE_THOUSAND_SEPARATOR = True
+
+# django-dbbackup. Сохраняю копию базы данных
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': f'{BASE_DIR}/backup/'}
+
 
 

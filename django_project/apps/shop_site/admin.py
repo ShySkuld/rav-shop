@@ -70,7 +70,7 @@ class ManufacturerAdmin(admin.ModelAdmin):
 
 @admin.register(PriceChange)
 class PriceChangeAdmin(admin.ModelAdmin):
-    list_display = ('product', 'date_price_change', 'old_price','current_price')
+    list_display = ('product', 'old_price','current_price', 'is_discount', 'discount_percent')
     ordering = ('-date_price_change', )
 
 

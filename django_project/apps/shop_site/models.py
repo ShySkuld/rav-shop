@@ -1,5 +1,8 @@
 from io import BytesIO
 
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+
 from .utils import resize_image_to_square
 from PIL import Image
 from django.core.exceptions import ValidationError
@@ -191,6 +194,10 @@ class PriceChange(models.Model):
                                     decimal_places=0,
                                     default=0,
                                     verbose_name='Старая цена')
+    is_discount = models.BooleanField(default=False, verbose_name='Со скидкой')
+
+    discount_percent = models.IntegerField(default=0, verbose_name='% скидки')
+
     current_price = models.DecimalField(max_digits=10,
                                         decimal_places=0,
                                         default=0,
@@ -202,6 +209,15 @@ class PriceChange(models.Model):
 
     def __str__(self):
         return str(self.product)
+
+    def clean(self):
+        if self.discount_percent < 0 or self.discount_percent > 100:
+            raise ValidationError("Значение должно быть от 0 до 100")
+
+    def save(self, *args, **kwargs):
+        if self.is_discount and self.discount_percent > 0:
+            self.current_price = self.current_price * (100 - self.discount_percent) // 100
+        super().save(*args, **kwargs)
 
 #  РЕКЛАМА <<<<<<<<<<<<<<<<<<
 
@@ -227,3 +243,11 @@ class AdvType(models.Model):
     class Meta:
         verbose_name = 'Категорию рекламы'
         verbose_name_plural = 'Категории рекламы'
+
+
+@receiver(pre_save, sender=PriceChange)
+def save_previous_price(sender, instance, **kwargs):
+    if instance.pk:  # Проверяю, что объект уже существует
+        old_instance = PriceChange.objects.get(pk=instance.pk)
+        # текущая запись.старая цена = предыдущая текущая цена
+        instance.old_price = old_instance.current_price

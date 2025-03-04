@@ -1,4 +1,6 @@
 #  https://django.fun/qa/353351/
+import random
+
 from PIL import Image
 
 def resize_image_to_square(image) -> None:
@@ -28,3 +30,15 @@ def resize_image_to_square(image) -> None:
         background.paste(img,  (size_diff // 2, 0), mask=mask)
 
     background.save(image.path)
+
+
+def set_discount_price(queryset):
+    for product in queryset:
+
+        last_element = product.price.all().last() # последняя текущая цена
+        last_element.old_price = last_element.current_price
+        last_element.current_price *= 15 # умножаем на 15
+        last_element.is_discount = True
+        last_element.discount_percent = random.randint(79, 92) # делаем скидку :)
+        last_element.save()
+
