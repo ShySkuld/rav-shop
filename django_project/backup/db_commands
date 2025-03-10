@@ -1,0 +1,14 @@
+manage.py dbbackup [-h] [--noinput] [-q] [-c] [-d DATABASE]
+                          [-s SERVERNAME] [-z] [-e] [-o OUTPUT_FILENAME]
+                          [-O OUTPUT_PATH] [-x EXCLUDE_TABLES] [-n SCHEMA]
+                          [--version] [-v {0,1,2,3}] [--settings SETTINGS]
+                          [--pythonpath PYTHONPATH] [--traceback] [--no-color]
+                          [--force-color] [--skip-checks]
+
+
+manage.py dbrestore [-h] [--noinput] [-q] [-d DATABASE]
+                           [-i INPUT_FILENAME] [-I INPUT_PATH] [-s SERVERNAME]
+                           [-c] [-p PASSPHRASE] [-z] [-n SCHEMA] [-r]
+                           [--version] [-v {0,1,2,3}] [--settings SETTINGS]
+                           [--pythonpath PYTHONPATH] [--traceback]
+                           [--no-color] [--force-color] [--skip-checks]

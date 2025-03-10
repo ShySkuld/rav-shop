@@ -1,5 +1,6 @@
 #  https://django.fun/qa/353351/
 import random
+from decimal import Decimal
 
 from PIL import Image
 
@@ -34,11 +35,15 @@ def resize_image_to_square(image) -> None:
 
 def set_discount_price(queryset):
     for product in queryset:
+        # актуальная текущая цена (из всех изменений цен, беру последний объект)
+        pricechange_object = product.price.all().last()
+        pricechange_object.discount_percent = random.randint(79, 92) # делаем скидку :)
+        # умножаем текущую цену на 15 и делим на 100,
+        # чтобы заранее перевести скидку из процентов
 
-        last_element = product.price.all().last() # последняя текущая цена
-        last_element.old_price = last_element.current_price
-        last_element.current_price *= 15 # умножаем на 15
-        last_element.is_discount = True
-        last_element.discount_percent = random.randint(79, 92) # делаем скидку :)
-        last_element.save()
+        disc_koeff = Decimal("0.15")
+        pricechange_object.current_price *= disc_koeff
+        pricechange_object.current_price *= pricechange_object.discount_percent
+        pricechange_object.is_discount = True
+        pricechange_object.save()
 

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cache %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'shop_site/assets/css/fonts.css' %}">
@@ -23,9 +24,9 @@
 
 {% block content %}
     <div class="container-fluid d-flex flex-column mt-4" > <!-- Главный контейнер -->
-    {% include 'blocks/items_discount.html' %}        
+    {% cache 100 disc %} {% include 'blocks/items_discount.html' %} {% endcache %}       
     {% include 'blocks/middle_adv.html' %}        
-    {% include 'blocks/items_for_you.html' %}
+    {% cache 100 for_you %} {% include 'blocks/items_for_you.html' %} {% endcache %}
     </div> 
 {% endblock content %}
 
@@ -36,4 +37,5 @@
 {% block custom_js %}
     <script src="{% static 'shop_site/assets/js/pop_up.js' %}"></script>
 {% endblock custom_js %}
- 
+
+  

@@ -1,4 +1,6 @@
 import random
+
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from apps.shop_site.models import Product, PriceChange
@@ -10,7 +12,6 @@ class HomePageView(ListView):
     template_name = 'templates/home_page.html'
     context_object_name = 'products'
 
-
     def get_context_data(self, **kwargs):
         global discount_queryset
         context = super().get_context_data(**kwargs)
@@ -18,18 +19,10 @@ class HomePageView(ListView):
         ids = context['object_list'].values_list('id', flat=True)
         # 12 уникальных id
         random_id = random.sample(list(ids), 12)
-
-
-        if not PriceChange.objects.filter(is_discount=True).exists():
-            # для рандомных 12 товаров цену умножаем на 15 и делаем скидку 79-92%
-            discount_queryset = context['object_list'].filter(
-                id__in=random_id)
-            set_discount_price(discount_queryset)
-            #context['discount'] = context['object_list'].filter(id__in=random_id)
-            #set_discount_price(context['discount'])
-            context['discount'] = discount_queryset
-
-
+        # для рандомных 12 товаров цену умножаем на 15 и делаем скидку 79-92%
+        context['discount'] = context['object_list'].filter(
+            id__in=random_id)
+        #set_discount_price(context['discount'])
         # все, кроме 12 скидочных товаров
         context['not_discount'] = context['object_list'].exclude(id__in=random_id)
         return context

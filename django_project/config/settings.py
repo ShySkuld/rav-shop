@@ -151,5 +151,12 @@ USE_THOUSAND_SEPARATOR = True
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': f'{BASE_DIR}/backup/'}
 
+# кешируем всякое
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+    }
+}
+
 
 
