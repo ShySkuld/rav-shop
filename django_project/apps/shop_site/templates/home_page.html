@@ -24,9 +24,9 @@
 
 {% block content %}
     <div class="container-fluid d-flex flex-column mt-4" > <!-- Главный контейнер -->
-    {% cache 100 disc %} {% include 'blocks/items_discount.html' %} {% endcache %}       
+    {% include 'blocks/items_discount.html' %}     
     {% include 'blocks/middle_adv.html' %}        
-    {% cache 100 for_you %} {% include 'blocks/items_for_you.html' %} {% endcache %}
+    {% include 'blocks/items_for_you.html' %}  
     </div> 
 {% endblock content %}
 

@@ -33,17 +33,5 @@ def resize_image_to_square(image) -> None:
     background.save(image.path)
 
 
-def set_discount_price(queryset):
-    for product in queryset:
-        # актуальная текущая цена (из всех изменений цен, беру последний объект)
-        pricechange_object = product.price.all().last()
-        pricechange_object.discount_percent = random.randint(79, 92) # делаем скидку :)
-        # умножаем текущую цену на 15 и делим на 100,
-        # чтобы заранее перевести скидку из процентов
 
-        disc_koeff = Decimal("0.15")
-        pricechange_object.current_price *= disc_koeff
-        pricechange_object.current_price *= pricechange_object.discount_percent
-        pricechange_object.is_discount = True
-        pricechange_object.save()
 

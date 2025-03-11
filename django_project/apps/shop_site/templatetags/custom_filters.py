@@ -1,4 +1,5 @@
 import random
+from decimal import ROUND_DOWN
 
 from django import template
 
@@ -9,10 +10,13 @@ register = template.Library()
 @register.filter
 def multiply(value, k):
     """Умножает значение на число"""
-    try:
-        return int(int(value) * k)
-    except (TypeError, ValueError):
-        return value
+    a = value.to_integral_value(rounding=ROUND_DOWN) * (k // 100)
+    print(a)
+    return a
+    # try:
+    #     return int(value) * (int(k) // 100)
+    # except (TypeError, ValueError):
+    #     return value
 
 
 @register.filter
@@ -25,8 +29,4 @@ def percent(value):
         return value
 
 
-@register.filter
-def random_percent(value):
-    """Муляж скидки, возвращает случайное число процента скидки"""
-    return random.randrange(75, 91)
 

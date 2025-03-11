@@ -215,8 +215,6 @@ class PriceChange(models.Model):
             raise ValidationError("Значение должно быть от 0 до 100")
 
     def save(self, *args, **kwargs):
-        if self.is_discount and self.discount_percent > 0:
-            self.current_price = self.current_price * (100 - self.discount_percent) // 100
         super().save(*args, **kwargs)
 
 #  РЕКЛАМА <<<<<<<<<<<<<<<<<<
@@ -245,9 +243,10 @@ class AdvType(models.Model):
         verbose_name_plural = 'Категории рекламы'
 
 
-@receiver(pre_save, sender=PriceChange)
-def save_previous_price(sender, instance, **kwargs):
-    if instance.pk:  # Проверяю, что объект уже существует
-        old_instance = PriceChange.objects.get(pk=instance.pk)
-        # текущая запись.старая цена = предыдущая текущая цена
-        instance.old_price = old_instance.current_price
+# отрабатывает после метода save модели из sender
+# @receiver(pre_save, sender=PriceChange)
+# def save_previous_price(sender, instance, **kwargs):
+    # if instance.pk:  # Проверяю, что объект уже существует
+    #     old_instance = PriceChange.objects.get(pk=instance.pk)
+    #     # текущая запись.старая цена = предыдущая текущая цена
+    #     instance.old_price = old_instance.current_price

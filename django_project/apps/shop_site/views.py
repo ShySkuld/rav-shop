@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from apps.shop_site.models import Product, PriceChange
-from .utils import set_discount_price
+
 
 
 class HomePageView(ListView):
@@ -13,18 +13,14 @@ class HomePageView(ListView):
     context_object_name = 'products'
 
     def get_context_data(self, **kwargs):
-        global discount_queryset
         context = super().get_context_data(**kwargs)
-        # лист всех id
-        ids = context['object_list'].values_list('id', flat=True)
-        # 12 уникальных id
-        random_id = random.sample(list(ids), 12)
-        # для рандомных 12 товаров цену умножаем на 15 и делаем скидку 79-92%
-        context['discount'] = context['object_list'].filter(
-            id__in=random_id)
-        #set_discount_price(context['discount'])
-        # все, кроме 12 скидочных товаров
-        context['not_discount'] = context['object_list'].exclude(id__in=random_id)
+
+        # 12 товаров со скидкой
+        context['discount'] = context['object_list'].filter(price__is_discount=True)[:12]
+
+        # все, кроме скидочных товаров
+        context['not_discount'] = context['object_list'].exclude(price__is_discount=True)
+
         return context
 
 
