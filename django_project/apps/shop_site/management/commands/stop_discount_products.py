@@ -17,4 +17,3 @@ class Command(BaseCommand):
             pricechange_object.save()
         print(f'Вернул стоимость для {len(discounted_products)} продуктов')
 
-        # 17975   9399

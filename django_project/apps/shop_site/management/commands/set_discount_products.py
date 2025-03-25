@@ -21,13 +21,12 @@ class Command(BaseCommand):
             # умножаем текущую цену на 15 и делим на 100,
             # чтобы заранее перевести скидку из процентов
 
-           # disc_koeff = Decimal('0.15')
-           # pricechange_object.current_price *= disc_koeff
+            disc_koeff = Decimal('0.15')
+            pricechange_object.current_price *= disc_koeff
             pricechange_object.current_price *= pricechange_object.discount_percent
             pricechange_object.is_discount = True
             pricechange_object.save()
 
         print(f'Установили скидку для товаров с id = {random_id}')
 
-        # 150 - 100%
-        # x   - 184%
+
